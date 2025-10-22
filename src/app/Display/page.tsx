@@ -1,4 +1,4 @@
-
+export const dynamic = "force-dynamic";
 import { AnimateText } from "@/components/ui/animated-text";
 import { prisma } from "../utils/db"
 import Link from "next/link"
