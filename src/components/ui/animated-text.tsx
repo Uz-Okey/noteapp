@@ -222,7 +222,7 @@ export const AnimateText: FC<Props> = ({
   }, [isInView, ctrls]);
 
   const letters = Array.from(text);
-  const { container, child } = animationVariants[type];
+  const { container } = animationVariants[type];
 
   if (type === "cascade" || type === "flicker") {
     return (
@@ -249,7 +249,7 @@ export const AnimateText: FC<Props> = ({
                   <motion.span
                     aria-hidden="true"
                     key={index}
-                    variants={child}
+                  
                     className="inline-block -mr-[0.01em]"
                   >
                     {character}
@@ -276,7 +276,7 @@ export const AnimateText: FC<Props> = ({
       {...props}
     >
       {letters.map((letter, index) => (
-        <motion.span key={index} variants={child}>
+        <motion.span key={index}>
           {letter === " " ? "\u00A0" : letter}
         </motion.span>
       ))}
