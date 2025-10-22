@@ -2,25 +2,24 @@ import { prisma } from "@/app/utils/db";
 import { NextRequest, NextResponse } from "next/server";
 
 
-export async function DELETE(
-  request: Request,
-  { params }: { params: { id: string } }
-) {
-  try {
-    const deletedNote = await prisma.note.delete({
-      where: { id: params.id },
-    });
 
-    return NextResponse.json(deletedNote, { status: 200 });
-  } catch (err) {
-    console.error("Error deleting note:", err);
-    return NextResponse.json(
+export async function DELETE(request:NextRequest, context: {
+  params: Promise<{ id: string }>;
+}) {
+  try{
+ const { id } = await context.params;
+ const deleteItem = await prisma.note.delete({
+  where:{id}
+ })
+
+ return NextResponse.json(deleteItem, {status: 200})
+  }catch(err){
+    console.error(err, 'unable to delete')
+        return NextResponse.json(
       { message: "Failed to delete note" },
-      { status: 500 }
-    );
+      { status: 500 })
   }
 }
-
 
 export async function PATCH(
   request: NextRequest,
