@@ -27,6 +27,7 @@ export default function Home() {
       if (!req.ok) throw new Error('unable to fetch post items from the backend ')
       reset()
       router.push('/Display')
+      router.refresh();
     } catch (err) {
       console.error(err, 'error message')
       setError('unable to fetch post')
