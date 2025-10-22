@@ -25,7 +25,7 @@ export default async function Content({ params }: props) {
 
     return (
         <div className="max-w-100 mx-auto">
-            <Link href='/' className="hover:underline">back to home</Link>
+            <Link href='/' className="hover:underline text-[14px]">back to home</Link>
 
             <h1 className="text-3xl font-bold text-green-600 mb-4">{data.title}</h1>
             <p className="bg-gray-100 p-4 rounded">{data.content}</p>
